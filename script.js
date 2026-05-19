@@ -162,11 +162,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const taxAndFeesPct = getItemTaxAndFeesPct(item);
             
             if (window.TAX_HANDLING === "Tax-inclusive pricing") {
-                return base; // The stated base price is the final cost
+                return base;
             } else if (window.TAX_HANDLING === "No tax") {
-                return base; // Ignore taxes
+                return base; 
             } else {
-                return base * (1 + (taxAndFeesPct / 100)); // Default: add on top
+                return base * (1 + (taxAndFeesPct / 100));
             }
         }
 
@@ -1306,7 +1306,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             async function loadExternalAds() {
                 try {
-                    // Fetching 100% SFW smartphone data to simulate real Electronic Ads
                     const response = await fetch('https://dummyjson.com/products/category/smartphones');
                     if (!response.ok) throw new Error("API request failed");
                     
@@ -1319,9 +1318,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         title: `${item.brand || 'Premium'} ${item.title}`,
                         desc: `⭐⭐⭐⭐⭐ Top Rated. ${item.description.substring(0, 50)}...`,
                         btn: `Shop Amazon - $${item.price}`,
-                        color: "#FF9900", // Official Amazon Orange
+                        color: "#FF9900",
+
+                        
                         img: item.thumbnail,
-                        // Link directly to an Amazon search for this exact phone
                         link: `https://www.amazon.com/s?k=${encodeURIComponent((item.brand || '') + ' ' + item.title + ' smartphone')}`
                     }));
                     
